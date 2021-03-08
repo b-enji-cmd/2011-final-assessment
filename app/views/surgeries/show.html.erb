@@ -4,6 +4,27 @@
 <p>Room Number:<%= @surgery.room %></p>
 
 <h2>Presiding Doctors</h2>
+<section id = "doctors">
+
+	<% @surgery.doctors.each do |doctor| %>
+		<%= doctor.name %>
+		<%= doctor.years_practiced %>
+	<% end %>
+
+</section>
+
+<h3>Add a Doctor to This Surgery</h3>
+<section id ="add-doctor">
+
+	<%= form_with model: @doctor, url: surgery_path(@surgery), method: :patch, local: :true do |f| %>
+        <%= f.label :name, 'Name:' %><br>
+    	 	<%= f.text_field :name %><br>
+    		<%= f.submit 'Add Doctor' %>
+  <% end %>
+
+</section>
+
+
 
 <h4>Most Experienced</h4>
 	<section id = "most-experienced">
@@ -15,3 +36,4 @@
 		<%= @surgery.worst_doctor[:name] %>
 		<%= @surgery.worst_doctor[:years] %>
 	</section>
+
