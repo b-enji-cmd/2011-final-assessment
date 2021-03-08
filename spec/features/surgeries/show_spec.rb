@@ -23,6 +23,7 @@ RSpec.describe 'surgery show page' do
 		end
 
 		within ("#least-experienced") do
+			expect(page).to have_content("#{@doctor_1.name}")
 			expect(page).to have_content("#{@doctor_1.years_practiced}")
 		end
 	end
