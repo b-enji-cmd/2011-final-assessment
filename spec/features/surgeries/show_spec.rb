@@ -39,7 +39,11 @@ RSpec.describe 'surgery show page' do
 	it "displays a field to add a doctor to the surgery" do
 		within("#add-doctor") do
 			fill_in "name", with: "Bruce"
-			click_on "Submit"
+			click_on "Add Doctor"
+		end
+		
+		within("#doctors") do
+			expect(page).to have_content("#{@doctor_3.name}")
 		end
 	end
 end
