@@ -31,7 +31,7 @@ RSpec.describe 'surgery index page' do
 	end
 
 	it "displays average years of doctors" do
-		within("#surgery-#{@surgery_1}") do
+		within("#surgery-#{@surgery_1.id}") do
 			expect(page).to have_content("Average Years of Experience: 40")
 		end
 	end

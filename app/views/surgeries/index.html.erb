@@ -1,0 +1,13 @@
+<h1>All Surgeries</h1>
+
+<section id = "surgeries">
+	<% @surgeries.each do |surgery| %>
+	<section id = "surgery-<%= surgery.id %>">
+			<p>Title: <%= surgery.title%></p>
+			<p>Day: <%= surgery.day%></p>
+			<p>Room Number: <%= surgery.room%></p>
+			<p>Average Years of Experience: <%= surgery.avg_years %></p>
+	</section>
+
+	<% end %>
+</section>
