@@ -1,0 +1,17 @@
+<h1>Surgery <%= @surgery.id %></h1>
+<p>Title:<%= @surgery.title  %></p>
+<p>Day:<%= @surgery.day %></p>
+<p>Room Number:<%= @surgery.room %></p>
+
+<h2>Presiding Doctors</h2>
+
+<h4>Most Experienced</h4>
+	<section id = "most-experienced">
+		<%= @surgery.best_doctor[:name] %>
+		<%= @surgery.best_doctor[:years] %>
+	</section>
+<h4>Least Experienced</h4>
+	<section id = "least-experienced">
+		<%= @surgery.worst_doctor[:name] %>
+		<%= @surgery.worst_doctor[:years] %>
+	</section>
