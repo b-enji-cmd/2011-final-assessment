@@ -17,6 +17,13 @@ RSpec.describe 'surgery show page' do
 		expect(page).to have_content("#{@surgery_1.room}")
 	end
 
+	it "displays presiding doctors" do
+		within("#doctors") do
+			expect(page).to have_content("#{@doctor_1.name}")
+			expect(page).to have_content("#{@doctor_2.name}")
+		end
+	end
+
 	it "has two sections for least and most experienced doctors" do
 		within ("#most-experienced") do
 			expect(page).to have_content("#{@doctor_2.name}")
