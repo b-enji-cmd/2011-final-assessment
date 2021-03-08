@@ -4,6 +4,7 @@ RSpec.describe 'surgery show page' do
 	before :each do
 		@doctor_1 = Doctor.create!(name: 'John', years_practiced: 30, uni: 'Case Western')
 		@doctor_2 = Doctor.create!(name: 'Mary', years_practiced: 40, uni: 'Anchutz')
+		@doctor_3 = Doctor.create!(name: 'Bruce', years_practiced: 50, uni: 'Anchutz')
 		@surgery_1 = Surgery.create!(title: 'Heart Transplant', day: 'Tuesday', room: 113 )
 		DoctorSurgery.create!(doctor_id: @doctor_1.id, surgery_id: @surgery_1.id)
 		DoctorSurgery.create!(doctor_id: @doctor_2.id, surgery_id: @surgery_1.id)
@@ -25,6 +26,13 @@ RSpec.describe 'surgery show page' do
 		within ("#least-experienced") do
 			expect(page).to have_content("#{@doctor_1.name}")
 			expect(page).to have_content("#{@doctor_1.years_practiced}")
+		end
+	end
+
+	it "displays a field to add a doctor to the surgery" do
+		within("#add-doctor") do
+			fill_in "name", with: "Bruce"
+			click_on "Submit"
 		end
 	end
 end
