@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
 	def index
-		@doctors = Doctor.all.order("years_practiced DESC")
+		@doctors = Doctor.all
 	end
 end
