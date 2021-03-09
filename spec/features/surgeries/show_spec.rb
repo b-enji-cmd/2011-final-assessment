@@ -6,6 +6,7 @@ RSpec.describe 'surgery show page' do
 		@doctor_2 = Doctor.create!(name: 'Mary', years_practiced: 40, uni: 'Anchutz')
 		@doctor_3 = Doctor.create!(name: 'Bruce', years_practiced: 50, uni: 'Anchutz')
 		@surgery_1 = Surgery.create!(title: 'Heart Transplant', day: 'Tuesday', room: 113 )
+
 		DoctorSurgery.create!(doctor_id: @doctor_1.id, surgery_id: @surgery_1.id)
 		DoctorSurgery.create!(doctor_id: @doctor_2.id, surgery_id: @surgery_1.id)
 		visit surgery_path(@surgery_1)
@@ -41,7 +42,7 @@ RSpec.describe 'surgery show page' do
 			fill_in "name", with: "Bruce"
 			click_on "Add Doctor"
 		end
-		
+
 		within("#doctors") do
 			expect(page).to have_content("#{@doctor_3.name}")
 		end
