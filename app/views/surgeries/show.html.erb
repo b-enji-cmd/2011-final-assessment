@@ -16,24 +16,24 @@
 <h3>Add a Doctor to This Surgery</h3>
 <section id ="add-doctor">
 
-	<%= form_with model: @doctor, url: surgery_path(@surgery), method: :patch, local: :true do |f| %>
+	<%= form_with url: doctor_surgeries_path, method: :post, local: :true do |f| %>
         <%= f.label :name, 'Name:' %><br>
     	 	<%= f.text_field :name %><br>
+    	 	<%= f.hidden_field :surgery_id, value: @surgery.id  %><br>
     		<%= f.submit 'Add Doctor' %>
   <% end %>
-
 </section>
 
 
 
 <h4>Most Experienced</h4>
 	<section id = "most-experienced">
-		<%= @surgery.best_doctor[:name] %>
-		<%= @surgery.best_doctor[:years] %>
+		<%= @most_experienced.name  %>
+		<%= @most_experienced.years_practiced  %>
 	</section>
 <h4>Least Experienced</h4>
 	<section id = "least-experienced">
-		<%= @surgery.worst_doctor[:name] %>
-		<%= @surgery.worst_doctor[:years] %>
+		<%= @least_experienced.name  %>
+		<%= @least_experienced.years_practiced  %>
 	</section>
 
