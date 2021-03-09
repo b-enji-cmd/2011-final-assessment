@@ -3,21 +3,19 @@ class Surgery < ApplicationRecord
                         :day,
                         :room
 
-  has_many :doctors
+  has_many :doctor_surgeries
+  has_many :doctors, through: :doctor_surgeries
+
 
   def best_doctor
-  	best = {}
-  	best_doctor = doctors.order("years_practiced DESC").limit(1).first
-  	best[:name] = best_doctor.name
-  	best[:years] = best_doctor.years_practiced
-  	best
+  	doctors.order("years_practiced DESC").first
   end
 
   def worst_doctor
-  	worst = {}
-  	worst_doctor = doctors.order(:years_practiced).limit(1).first
-  	worst[:name] = worst_doctor.name
-  	worst[:years] = worst_doctor.years_practiced
-  	worst
+ 		doctors.order(:years_practiced).first
+  end
+
+  def self.averaged_surgeries
+  	select("surgeries.*, avg(years_practiced) as avg_years").joins(:doctors).group(:id).order("avg_years desc")
   end
 end

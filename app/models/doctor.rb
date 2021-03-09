@@ -3,5 +3,10 @@ class Doctor < ApplicationRecord
                         :years_practiced,
                         :uni
 
-  has_many :surgeries
+  has_many :doctor_surgeries
+  has_many :surgeries, through: :doctor_surgeries
+
+  def self.experienced
+  	order(years_practiced: :desc)
+  end
 end
